@@ -2,6 +2,8 @@ from aiogram import Router
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 
+from app.keyboards.main_menu import main_menu 
+
 from data.profile import PROFILE
 
 router = Router()
@@ -18,5 +20,5 @@ async def start(message: Message):
 
     await message.answer(
         text,
-        parse_mode="HTML",
+        reply_markup=main_menu,
     )

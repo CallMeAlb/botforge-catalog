@@ -1,12 +1,13 @@
 from aiogram import Router, F
-from aiogram.types import Message, Callback Query
+from aiogram.types import CallbackQuery
 
 from data.profile import PROFILE
 
 router = Router()
 
-@router.message(F.text == "👤 Обо мне")
-async def about_handler(message: Message):
+
+@router.callback_query(F.data == "about")
+async def about_callback(callback: CallbackQuery):
     text = (
         f"👤 <b>{PROFILE['name']}</b>\n"
         f"{PROFILE['profession']}\n"
@@ -14,15 +15,9 @@ async def about_handler(message: Message):
         f"{PROFILE['about']}"
     )
 
-    await message.answer(text)
+    await callback.message.answer(text)
+    await callback.answer()
 
-@router.message(F.text == "💰 Услуги")
-async def services_handler(message: Message):
-    services = "\n".join(PROFILE["services"])
-
-    await message.answer(
-        f"<b>💰 Мои услуги</b>\n\n{services}"
-    )
 
 @router.callback_query(F.data == "services")
 async def services_callback(callback: CallbackQuery):
@@ -34,8 +29,9 @@ async def services_callback(callback: CallbackQuery):
 
     await callback.answer()
 
-@router.message(F.text == "📞 Контакты")
-async def contacts_handler(message: Message):
+
+@router.callback_query(F.data == "contacts")
+async def contacts_callback(callback: CallbackQuery):
     contacts = PROFILE["contacts"]
 
     text = (
@@ -44,10 +40,14 @@ async def contacts_handler(message: Message):
         f"Телефон: {contacts['phone']}"
     )
 
-    await message.answer(text)
+    await callback.message.answer(text)
+    await callback.answer()
 
-@router.message(F.text == "🎥 Портфолио")
-async def portfolio_handler(message: Message):
-    await message.answer(
+
+@router.callback_query(F.data == "portfolio")
+async def portfolio_callback(callback: CallbackQuery):
+    await callback.message.answer(
         "🎥 Здесь позже будет портфолио."
     )
+
+    await callback.answer()

@@ -2,8 +2,21 @@ from aiogram import Router
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 
+from data.profile import PROFILE
+
 router = Router()
 
 @router.message(CommandStart())
 async def start(message: Message):
-    await message.answer("Добро пожаловать в BotForge Catalog!")
+    text = (
+        f"👋 Привет!\n\n"
+        f"Меня зовут <b>{PROFILE['name']}</b>.\n"
+        f"Я — {PROFILE['profession']}.\n"
+        f"📍 {PROFILE['city']}\n\n"
+        f"{PROFILE['about']}"
+    )
+
+    await message.answer(
+        text,
+        parse_mode="HTML",
+    )

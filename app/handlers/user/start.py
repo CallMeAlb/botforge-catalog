@@ -2,7 +2,7 @@ from aiogram import Router
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 
-from app.keyboards.main_menu import main_menu 
+from app.keyboards.inline_menu import main_menu 
 
 from data.profile import PROFILE
 

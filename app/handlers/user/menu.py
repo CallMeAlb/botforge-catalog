@@ -1,5 +1,5 @@
 from aiogram import Router, F
-from aiogram.types import Message
+from aiogram.types import Message, Callback Query
 
 from data.profile import PROFILE
 
@@ -23,6 +23,16 @@ async def services_handler(message: Message):
     await message.answer(
         f"<b>💰 Мои услуги</b>\n\n{services}"
     )
+
+@router.callback_query(F.data == "services")
+async def services_callback(callback: CallbackQuery):
+    services = "\n".join(PROFILE["services"])
+
+    await callback.message.answer(
+        f"<b>💰 Мои услуги</b>\n\n{services}"
+    )
+
+    await callback.answer()
 
 @router.message(F.text == "📞 Контакты")
 async def contacts_handler(message: Message):

@@ -3,7 +3,7 @@ from aiogram.types import CallbackQuery
 
 from data.profile import PROFILE
 from app.keyboards.inline_menu import main_menu
-from app.keyboards.sections import back_menu
+from app.keyboards.sections import back_menu, contacts_menu
 
 router = Router()
 
@@ -43,13 +43,13 @@ async def contacts_callback(callback: CallbackQuery):
 
     text = (
         "<b>📞 Контакты</b>\n\n"
-        f"Telegram: {contacts['telegram']}\n"
-        f"Телефон: {contacts['phone']}"
+        f"Телефон: {contacts['phone']}\n"
+        f"Telegram: {contacts['telegram']}"
     )
 
     await callback.message.edit_text(
         text,
-        reply_markup=back_menu
+        reply_markup=contacts_menu()
     )
 
     await callback.answer()

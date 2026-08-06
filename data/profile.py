@@ -22,8 +22,8 @@ PROFILE = {
     
     "links": {
         "telegram": "https://t.me/username",
-        "portfolio": "https://...",
-        "website": "https://...",
-        "vk": "https://vk.com/..."
+        "portfolio": "https://google.com",
+        "website": "https://google.com",
+        "vk": "https://vk.com"
     }
 }

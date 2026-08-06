@@ -18,5 +18,12 @@ PROFILE = {
     "contacts": {
         "telegram": "@username",
         "phone": "+7 (900) 000-00-00",
+    },
+    
+    "links": {
+        "telegram": "https://t.me/username",
+        "portfolio": "https://...",
+        "website": "https://...",
+        "vk": "https://vk.com/..."
     }
 }

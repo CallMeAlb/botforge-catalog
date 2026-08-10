@@ -1,12 +1,12 @@
 from aiogram import Router
 from aiogram.filters import CommandStart
-from aiogram.types import Message, ReplyKeyboardRemove
+from aiogram.types import Message
 
-from app.keyboards.inline_menu import main_menu 
-
+from app.keyboards.inline_menu import main_menu
 from data.profile import PROFILE
 
 router = Router()
+
 
 @router.message(CommandStart())
 async def start(message: Message):
@@ -15,7 +15,7 @@ async def start(message: Message):
         f"Меня зовут <b>{PROFILE['name']}</b>.\n"
         f"Я — {PROFILE['profession']}.\n"
         f"📍 {PROFILE['city']}\n\n"
-        f"{PROFILE['about']}"
+        f"{PROFILE['intro']}"
     )
 
     await message.answer(

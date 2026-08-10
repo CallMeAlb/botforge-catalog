@@ -69,12 +69,13 @@ async def portfolio_callback(callback: CallbackQuery):
 @router.callback_query(F.data == "back")
 async def back_callback(callback: CallbackQuery):
     text = (
-        f"👋 Привет!\n\n"
-        f"Меня зовут <b>{PROFILE['name']}</b>.\n"
-        f"Я — {PROFILE['profession']}.\n"
-        f"📍 {PROFILE['city']}\n\n"
-        f"{PROFILE['about']}"
-    )
+    f"👋 Привет!\n\n"
+    f"Меня зовут <b>{PROFILE['name']}</b>.\n"
+    f"Я — {PROFILE['profession']}.\n"
+    f"📍 {PROFILE['city']}\n\n"
+    f"{PROFILE['intro']}"
+)
+
 
     await callback.message.edit_text(
         text,
